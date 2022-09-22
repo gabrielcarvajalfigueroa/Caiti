@@ -1,0 +1,15 @@
+﻿<Application x:Class="Caiti.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Caiti"
+             >
+    <Application.Resources>
+        <Style TargetType="Button"> <!-- Style que le agrega un padding a todos los botones de la app ya que no tiene x:Key-->
+            <Setter Property="Padding" Value="20 10"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+    </Application.Resources>
+</Application>

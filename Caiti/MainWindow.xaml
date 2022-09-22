@@ -1,0 +1,34 @@
+﻿<Window x:Class="Caiti.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Caiti"
+        xmlns:views="clr-namespace:Caiti.Views"
+        xmlns:viewmodels="clr-namespace:Caiti.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <!-- Estos data templates se usan para mapear las views-->
+            <DataTemplate DataType="{x:Type viewmodels:InicioViewModel}">
+                <views:Inicio/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:RegistroViewModel}">
+                <views:Registro/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type viewmodels:ElegirCursoViewModel}">
+                <views:ElegirCurso/>
+            </DataTemplate>
+            
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+
+
+
+    </Grid>
+</Window>
