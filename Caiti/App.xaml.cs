@@ -25,7 +25,7 @@ namespace Caiti
         protected override void OnStartup(StartupEventArgs e)
         {
 
-            _navigationStore.CurrentViewModel = new InicioViewModel(_navigationStore);
+            _navigationStore.CurrentViewModel = new PlanificacionViewModel(_navigationStore);
 
             MainWindow = new MainWindow()
             {

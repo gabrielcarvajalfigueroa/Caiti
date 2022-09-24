@@ -7,6 +7,67 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Hola"/>
+        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding listaSemanas}"  AutoGenerateColumns="False" CanUserAddRows="false">
+
+            <DataGrid.Columns>
+                <!--COLUMNA SEMANA-->
+                <DataGridTemplateColumn Header="Semana">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ItemsControl ItemsSource="{Binding info}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Informacion" Width="920">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <DataGrid x:Name="dataGridInner" ItemsSource="{Binding Clases}"  AutoGenerateColumns="False"
+                                      CanUserAddRows="True" >
+                                <DataGrid.Columns>
+                                    <!--COLUMNA CLASE-->
+                                    <DataGridTextColumn  Header="Clase" Binding="{Binding idClase}" Width="*"/>
+
+                                    <!--COLUMNA ACTIVIDADES-->
+                                    <DataGridTemplateColumn Header="Actividades" Width="300">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Name="ElPanel" Orientation="Horizontal">
+                                                    <ComboBox x:Name="Combobox1" Width="100" ItemsSource="{Binding tipoClases}"/>
+                                                    <Button x:Name="AgregarActividad" Content="+"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <!--COLUMNA FECHA PROGRAMADA-->
+                                    <DataGridTemplateColumn Header="Fecha Programada">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <!--COLUMNA REALIZADA-->
+                                    <DataGridCheckBoxColumn  Header="Realizada" Binding="{Binding realizada ,Mode=TwoWay}" Width="auto"/>
+
+                                    <!--COLUMNA COMENTARIO-->
+                                    <DataGridTemplateColumn Header="Comentario">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+
+                                                <TextBox Text="{Binding comentario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
+
 </UserControl>
