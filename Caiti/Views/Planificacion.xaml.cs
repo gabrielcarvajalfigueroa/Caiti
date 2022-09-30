@@ -21,6 +21,8 @@ namespace Caiti.Views
     /// Lógica de interacción para Planificacion.xaml
     /// </summary>
     /// 
+
+
     public class Clase
     {
 
@@ -46,11 +48,14 @@ namespace Caiti.Views
 
         public ArrayList info { get; set; } // contiene id de la semana y un boton
 
+
         public Semana(string id)
         {
             Button btn = new Button();
 
             btn.Content = "+";
+            btn.Name = "agregarSemana";
+            btn.Click += Planificacion.AgregarSemana_Click;
 
             info = new ArrayList();
 
@@ -63,11 +68,15 @@ namespace Caiti.Views
     {
         public ObservableCollection<Semana> listaSemanas { get; set; }
 
+        public DataGrid dg { get; set; }
+
 
         public Planificacion()
         {
 
             InitializeComponent();
+
+            
 
             listaSemanas = new ObservableCollection<Semana>
         {
@@ -84,11 +93,24 @@ namespace Caiti.Views
                 new Clase { idClase = "C3", comentario = "" , realizada=false},
             },
             idSemana = "S2" },
+        new Semana("3") {
+            Clases = new List<Clase> {
+                new Clase { idClase = "C1", comentario = "" , realizada=false},
+                new Clase { idClase = "C2", comentario = "" , realizada=false},
+                new Clase { idClase = "C3", comentario = "" , realizada=false},
+            },
+            idSemana = "S3" },
     };
 
 
 
             dataGrid1.ItemsSource = listaSemanas;
+        }
+        public static void AgregarSemana_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+            //dataGrid1.Items.Add(new Semana("5"));
         }
     }
 }

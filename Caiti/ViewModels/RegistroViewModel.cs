@@ -1,16 +1,21 @@
-﻿using Caiti.Commands;
+﻿using Caiti.Clases_BD;
+using Caiti.Commands;
 using Caiti.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Caiti.ViewModels
 {
     public class RegistroViewModel : ViewModelBase
     {
+        
+
+
         private string _nombre;
 
         public string Nombre
@@ -72,6 +77,8 @@ namespace Caiti.ViewModels
         }
 
         public ICommand ListoCommand { get; }
+
+        
 
         public RegistroViewModel(NavigationStore navigationStore)
         {

@@ -40,6 +40,7 @@
                 Text="Nombre"/>
 
             <TextBox
+                Name="Nombre"
                 Grid.Row="1"
                 Margin="0 5 0 0"
                 Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged}"/>
@@ -57,6 +58,7 @@
                 Text="Apellido"/>
 
             <TextBox
+                Name="Apellido"
                 Grid.Row="1"
                 Margin="0 5 0 0"
                 Text="{Binding Apellido, UpdateSourceTrigger=PropertyChanged}"/>
@@ -74,6 +76,7 @@
                 Text="Correo"/>
 
             <TextBox
+                Name="Correo"
                 Grid.Row="1"
                 Margin="0 5 0 0"
                 Text="{Binding Correo, UpdateSourceTrigger=PropertyChanged}"/>
@@ -91,6 +94,7 @@
                 Text="Telefono"/>
 
             <TextBox
+                Name="Telefono"
                 Grid.Row="1"
                 Margin="0 5 0 0"
                 Text="{Binding Telefono, UpdateSourceTrigger=PropertyChanged}"/>
@@ -98,11 +102,13 @@
         </Grid>
 
         <Button
+            Name="Listo"
             Grid.Row="6"
             HorizontalAlignment="Right"
             Content="Listo"
             FontSize="20"
             Margin="0 20 25 0"
+            Click="Listo_Click"
             Command="{Binding ListoCommand}"/>
 
 

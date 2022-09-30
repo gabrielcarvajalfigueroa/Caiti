@@ -18,7 +18,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Informacion" Width="920">
+                <DataGridTemplateColumn Header="Informacion" Width="*">
                     <DataGridTemplateColumn.CellTemplate >
                         <DataTemplate>
                             <DataGrid x:Name="dataGridInner" ItemsSource="{Binding Clases}"  AutoGenerateColumns="False"

@@ -1,5 +1,6 @@
 ﻿using Caiti.Stores;
 using Caiti.ViewModels;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,7 +26,11 @@ namespace Caiti
         protected override void OnStartup(StartupEventArgs e)
         {
 
-            _navigationStore.CurrentViewModel = new PlanificacionViewModel(_navigationStore);
+            //Se levanta la BD
+            DatabaseFacade facade = new DatabaseFacade(new DataContext());
+            facade.EnsureCreated();
+
+            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore);
 
             MainWindow = new MainWindow()
             {

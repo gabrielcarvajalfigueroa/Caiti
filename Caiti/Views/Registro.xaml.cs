@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caiti.Clases_BD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,54 @@ namespace Caiti.Views
     /// </summary>
     public partial class Registro : UserControl
     {
+        public List<Profesor> DatabaseProfesores { get; private set; }
         public Registro()
         {
             InitializeComponent();
+        }
+
+        public void Create()
+        {
+
+            using (DataContext context = new DataContext())
+            {
+                var nombre = Nombre.Text;
+                var apellido = Apellido.Text;
+                var correo = Correo.Text;
+                var telefono = Telefono.Text;
+
+                if (nombre != null && apellido != null)
+                {
+                    context.Profesores.Add(new Profesor()
+                    {
+                        Nombre = nombre,
+                        Apellido = apellido,
+                        Correo = correo,
+                        Telefono = telefono
+                    });
+                    context.SaveChanges();
+                }
+
+            }
+        }
+
+        public void Read()
+        {
+            using (DataContext context = new DataContext())
+            {
+                DatabaseProfesores = context.Profesores.ToList();
+                Console.WriteLine(DatabaseProfesores[0].Nombre);
+                Console.WriteLine(DatabaseProfesores[1].Nombre);
+                
+            }
+
+        }
+
+        public void Listo_Click(object sender, RoutedEventArgs e)
+        {
+            Create();
+            Read();
+
         }
     }
 }
