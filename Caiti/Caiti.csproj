@@ -57,6 +57,11 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="Models\Career.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Professor.cs" />
+    <Compile Include="Models\School.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="ViewModels\ElegirCursoViewModel.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
@@ -123,6 +128,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="db_classes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
