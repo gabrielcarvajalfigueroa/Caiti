@@ -29,5 +29,17 @@ namespace Caiti.Models
         {
             return _courses_professor;
         }
+
+        public void AddCourse(Course course)
+        {
+            foreach (Course existingCourse in _courses_professor)
+            {
+                if (existingCourse.Conflicts(course))
+                {
+                    throw new CourseConflictException(existingCourse, course);
+                }
+            }
+            _courses_professor.Add(course);
+        }
     }
 }

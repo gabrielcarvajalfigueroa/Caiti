@@ -59,6 +59,7 @@
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Exceptions\CourseConflictException.cs" />
     <Compile Include="Models\Professor.cs" />
     <Compile Include="Models\School.cs" />
     <Compile Include="Models\Subject.cs" />
