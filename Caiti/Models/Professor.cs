@@ -11,16 +11,14 @@ namespace Caiti.Models
     {
         private readonly List<Course> _courses_professor;
         
-        public Professor(int id_professor, string name, string email, string phone, string office_hours)
+        public Professor(string name, string email, string phone, string office_hours)
         {
-            Id_Professor = id_professor;
             Name = name;
             Email = email;
             Phone = phone;
             Office_hours = office_hours;
 
         }
-        public int Id_Professor { get; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
