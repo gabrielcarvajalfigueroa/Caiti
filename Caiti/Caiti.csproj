@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="DbContexts\CaitiDbContext.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Exceptions\CourseConflictException.cs" />
