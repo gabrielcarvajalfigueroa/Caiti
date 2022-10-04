@@ -1,5 +1,7 @@
-﻿using Caiti.Stores;
+﻿using Caiti.DbContexts;
+using Caiti.Stores;
 using Caiti.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +18,7 @@ namespace Caiti
     public partial class App : Application
     {
         private readonly NavigationStore _navigationStore;
+        private const string CONNECTION_STRING = "Data Source=caiti.db";
 
         public App()
         {
@@ -24,8 +27,14 @@ namespace Caiti
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            _navigationStore.CurrentViewModel = new InicioViewModel(_navigationStore);
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
+            using(CaitiDbContext dbContext = new CaitiDbContext(options))
+            {
+                dbContext.Database.Migrate();
+            }
+            
+            
+            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore);
 
             MainWindow = new MainWindow()
             {
