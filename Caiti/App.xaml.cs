@@ -34,7 +34,7 @@ namespace Caiti
             }
             
             
-            _navigationStore.CurrentViewModel = new InicioViewModel(_navigationStore);
+            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore);
 
             MainWindow = new MainWindow()
             {
