@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caiti.Clases_BD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,44 @@ namespace Caiti.Views
     /// </summary>
     public partial class Inicio : UserControl
     {
+        public List<Profesor> DatabaseProfesores { get; private set; }
+
         public Inicio()
         {
             InitializeComponent();
         }
+
+        public bool VerificarProfesor()
+        {
+            using (DataContext context = new DataContext())
+            {
+                DatabaseProfesores = context.Profesores.ToList();
+
+                var nombre_profesor = NombreProfesor.Text;
+
+                foreach(Profesor profesor in DatabaseProfesores)
+                {
+                    if(profesor.Nombre == nombre_profesor)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+
+
+            }
+
+        }
+
+        private void textChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            if (VerificarProfesor())
+            {
+                ContinuarBoton.IsEnabled = true;
+            }
+
+        } 
+
+        
     }
 }

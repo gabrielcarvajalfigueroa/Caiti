@@ -18,5 +18,8 @@ namespace Caiti
 
         public DbSet<Profesor> Profesores { get; set; }
 
+        public DbSet<Curso> Cursos { get; set; }
+
+
     }
 }

@@ -31,6 +31,8 @@
             HorizontalAlignment="Center"/>
 
         <TextBox
+            Name="NombreProfesor"
+            TextChanged="textChangedEventHandler"
             Grid.Row="2"
             MaxWidth="600"
             MaxHeight="40"
@@ -45,6 +47,8 @@
             />
 
         <Button
+            Name="ContinuarBoton"
+            IsEnabled="False"
             Grid.Row="5"
             HorizontalAlignment="Right"
             Content="Continuar"

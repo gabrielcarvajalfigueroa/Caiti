@@ -57,8 +57,7 @@ namespace Caiti.Views
             using (DataContext context = new DataContext())
             {
                 DatabaseProfesores = context.Profesores.ToList();
-                Console.WriteLine(DatabaseProfesores[0].Nombre);
-                Console.WriteLine(DatabaseProfesores[1].Nombre);
+                
                 
             }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caiti.Clases_BD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,49 @@ namespace Caiti.Views
     /// </summary>
     public partial class ElegirCurso : UserControl
     {
+        public List<Curso> DatabaseCursos { get; private set; }
         public ElegirCurso()
         {
             InitializeComponent();
+            Leer_BD();
+        }
+
+        public void Crear_Curso()
+        {
+            
+
+            using (DataContext context = new DataContext())
+            {
+                var nombre_curso = NombreCurso.Text;
+                
+
+                if (nombre_curso != null)
+                {
+                    context.Cursos.Add(new Curso()
+                    {
+                        Nombre_curso = nombre_curso,
+                        
+                    });
+                    context.SaveChanges();
+                }
+
+            }
+        }
+
+        public void Leer_BD()
+        {
+            using (DataContext context = new DataContext())
+            {
+                DatabaseCursos = context.Cursos.ToList();
+                CursosList.ItemsSource = DatabaseCursos;
+            }
+
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            Crear_Curso();
+            Leer_BD();
         }
     }
 }

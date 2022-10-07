@@ -78,6 +78,7 @@ namespace Caiti.ViewModels
 
         public ICommand ListoCommand { get; }
 
+
         
 
         public RegistroViewModel(NavigationStore navigationStore)

@@ -30,7 +30,7 @@ namespace Caiti
             DatabaseFacade facade = new DatabaseFacade(new DataContext());
             facade.EnsureCreated();
 
-            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore);
+            _navigationStore.CurrentViewModel = new InicioViewModel(_navigationStore);
 
             MainWindow = new MainWindow()
             {

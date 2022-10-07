@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Caiti.ViewModels
@@ -33,7 +34,12 @@ namespace Caiti.ViewModels
         public InicioViewModel(NavigationStore navigationStore)
         {
             RegistrarseCommand = new NavigateCommand<RegistroViewModel>(navigationStore, () => new RegistroViewModel(navigationStore));
+
+            ContinuarCommand = new NavigateCommand<ElegirCursoViewModel>(navigationStore, () => new ElegirCursoViewModel(navigationStore));
+
         }
+
+       
 
     }
 }
