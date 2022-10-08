@@ -25,7 +25,7 @@ namespace Caiti.Services.ProfessorCreators
 
                 ProfessorDTO professorDTO = ToProfessorDTO(professor);
 
-                context.ProfessorDTOs.Add(professorDTO);
+                context.Professors.Add(professorDTO);
                 await context.SaveChangesAsync();
             }
         }

@@ -1,4 +1,7 @@
 ﻿using Caiti.DbContexts;
+using Caiti.Models;
+using Caiti.Services.ProfessorCreators;
+using Caiti.Services.ProfessorProviders;
 using Caiti.Stores;
 using Caiti.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -17,11 +20,21 @@ namespace Caiti
     /// </summary>
     public partial class App : Application
     {
-        private readonly NavigationStore _navigationStore;
         private const string CONNECTION_STRING = "Data Source=caiti.db";
+
+        private readonly SistemaProfesores _sistemaProfesores;
+        private readonly NavigationStore _navigationStore;        
+        private readonly CaitiDbContextFactory _caitiDbContextFactory;
 
         public App()
         {
+            _caitiDbContextFactory = new CaitiDbContextFactory(CONNECTION_STRING);
+            IProfessorProvider professorProvider = new DatabaseProfessorProvider(_caitiDbContextFactory);
+            IProfessorCreator professorCreator = new ProfessorCreator(_caitiDbContextFactory);
+
+            ProfessorBook professorBook = new ProfessorBook(professorProvider, professorCreator);
+
+            _sistemaProfesores = new SistemaProfesores(professorBook, "Sistema Caiti");
             _navigationStore = new NavigationStore();
         }
 
@@ -34,7 +47,7 @@ namespace Caiti
             }
             
             
-            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore);
+            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore,_sistemaProfesores);
 
             MainWindow = new MainWindow()
             {

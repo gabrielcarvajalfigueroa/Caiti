@@ -12,6 +12,6 @@ namespace Caiti.DbContexts
     public class CaitiDbContext : DbContext
     {
         public CaitiDbContext(DbContextOptions options) : base(options) { }
-        public DbSet<ProfessorDTO> ProfessorDTOs { get; set; }
+        public DbSet<ProfessorDTO> Professors { get; set; }
     }
 }

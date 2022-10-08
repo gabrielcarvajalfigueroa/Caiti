@@ -8,7 +8,7 @@ namespace Caiti.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ProfessorDTOs",
+                name: "Professors",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -19,14 +19,14 @@ namespace Caiti.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfessorDTOs", x => x.Id);
+                    table.PrimaryKey("PK_Professors", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProfessorDTOs");
+                name: "Professors");
         }
     }
 }

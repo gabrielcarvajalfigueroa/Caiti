@@ -1,4 +1,5 @@
 ﻿using Caiti.Commands;
+using Caiti.Models;
 using Caiti.Stores;
 using System;
 using System.Collections.Generic;
@@ -73,10 +74,11 @@ namespace Caiti.ViewModels
 
         public ICommand ListoCommand { get; }
 
-        public RegistroViewModel(NavigationStore navigationStore)
+        public RegistroViewModel(NavigationStore navigationStore, SistemaProfesores sistemaProfesores)
         {
             // se implementa haciendo uso del navigate command
-            ListoCommand = new NavigateCommand<ElegirCursoViewModel>(navigationStore, () => new ElegirCursoViewModel(navigationStore));
+            //ListoCommand = new NavigateCommand<ElegirCursoViewModel>(navigationStore, () => new ElegirCursoViewModel(navigationStore));
+            ListoCommand = new RegistrarProfesorCommand(this, sistemaProfesores);        
         }
 
     }

@@ -24,9 +24,9 @@ namespace Caiti.Services.ProfessorProviders
             {
                 await Task.Delay(3000);
 
-                IEnumerable<ProfessorDTO> reservationDTOs = await context.ProfessorDTOs.ToListAsync();
+                IEnumerable<ProfessorDTO> professorDTOs = await context.Professors.ToListAsync();
 
-                return reservationDTOs.Select(r => ToProfessor(r));
+                return professorDTOs.Select(r => ToProfessor(r));
             }
         }
 
