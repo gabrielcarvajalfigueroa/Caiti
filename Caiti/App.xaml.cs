@@ -1,5 +1,6 @@
 ﻿using Caiti.DbContexts;
 using Caiti.Models;
+using Caiti.Services;
 using Caiti.Services.ProfessorCreators;
 using Caiti.Services.ProfessorProviders;
 using Caiti.Stores;
@@ -47,7 +48,7 @@ namespace Caiti
             }
             
             
-            _navigationStore.CurrentViewModel = new RegistroViewModel(_navigationStore,_sistemaProfesores);
+            _navigationStore.CurrentViewModel = CreateInicioViewModel();
 
             MainWindow = new MainWindow()
             {
@@ -56,6 +57,24 @@ namespace Caiti
 
             MainWindow.Show();
             base.OnStartup(e);
+        }
+
+
+        private InicioViewModel CreateInicioViewModel()
+        {
+            return new InicioViewModel(_sistemaProfesores 
+                                       ,new NavigationService(_navigationStore, CreateElegirCursoViewModel)
+                                       ,new NavigationService(_navigationStore, CreateRegistroViewModel));
+        }
+
+        private RegistroViewModel CreateRegistroViewModel()
+        {
+            return new RegistroViewModel(_sistemaProfesores, new NavigationService(_navigationStore,CreateElegirCursoViewModel));
+        }
+
+        private ElegirCursoViewModel CreateElegirCursoViewModel()
+        {
+            return new ElegirCursoViewModel(_navigationStore);
         }
 
     }

@@ -34,7 +34,7 @@
             Grid.Row="2"
             MaxWidth="600"
             MaxHeight="40"
-            Text="{Binding NombreUsuario}"/>
+            Text="{Binding NombreUsuario, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button
             Grid.Row="4"

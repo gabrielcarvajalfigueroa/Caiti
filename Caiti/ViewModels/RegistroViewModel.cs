@@ -1,5 +1,6 @@
 ﻿using Caiti.Commands;
 using Caiti.Models;
+using Caiti.Services;
 using Caiti.Stores;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 
 namespace Caiti.ViewModels
 {
@@ -74,11 +76,11 @@ namespace Caiti.ViewModels
 
         public ICommand ListoCommand { get; }
 
-        public RegistroViewModel(NavigationStore navigationStore, SistemaProfesores sistemaProfesores)
+        public RegistroViewModel(SistemaProfesores sistemaProfesores, NavigationService elegirCursoViewNavigationService)
         {
             // se implementa haciendo uso del navigate command
             //ListoCommand = new NavigateCommand<ElegirCursoViewModel>(navigationStore, () => new ElegirCursoViewModel(navigationStore));
-            ListoCommand = new RegistrarProfesorCommand(this, sistemaProfesores);        
+            ListoCommand = new RegistrarProfesorCommand(this, sistemaProfesores, elegirCursoViewNavigationService);        
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Caiti.Stores;
+﻿using Caiti.Services;
+using Caiti.Stores;
 using Caiti.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,27 +9,19 @@ using System.Threading.Tasks;
 
 namespace Caiti.Commands
 {
-    public class NavigateCommand<TViewModel> : CommandBase
-        where TViewModel : ViewModelBase // Se le hace constraint al tipo
+    public class NavigateCommand : CommandBase
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<TViewModel> _createViewModel;
+        private readonly NavigationService _navigationService;
 
-        public NavigateCommand(NavigationStore navigationStore, Func<TViewModel> createViewModel)
+        public NavigateCommand(NavigationService navigationService)
         {
-            _navigationStore = navigationStore;
-            _createViewModel = createViewModel;
+            _navigationService = navigationService;
         }
-
 
         public override void Execute(object parameter)
         {
-            _navigationStore.CurrentViewModel = _createViewModel(); // hay q pasar el view model del elegir curso que aun no hago
-
-
+            _navigationService.Navigate();
         }
-
-
     }
 
 }

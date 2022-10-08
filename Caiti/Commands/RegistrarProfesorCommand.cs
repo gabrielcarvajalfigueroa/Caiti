@@ -1,4 +1,5 @@
 ﻿using Caiti.Models;
+using Caiti.Services;
 using Caiti.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Navigation;
+
 
 namespace Caiti.Commands
 {
@@ -15,14 +16,15 @@ namespace Caiti.Commands
     {
         private readonly RegistroViewModel _registroViewModel;
         private readonly SistemaProfesores _sistemaProfesores;
-        //private readonly NavigationService _elegirCursoViewNavigationService;
+        private readonly NavigationService _elegirCursoViewNavigationService;
 
         public RegistrarProfesorCommand(RegistroViewModel registroViewModel, 
-            SistemaProfesores sistemaProfesores)
+            SistemaProfesores sistemaProfesores,
+            NavigationService elegirCursoViewNavigationService)
         {
             _registroViewModel = registroViewModel;
             _sistemaProfesores = sistemaProfesores;
-            //_elegirCursoViewNavigationService = elegirCursoViewNavigationService;
+            _elegirCursoViewNavigationService = elegirCursoViewNavigationService;
 
         }
 
@@ -35,6 +37,10 @@ namespace Caiti.Commands
             try
             {
                 await _sistemaProfesores.InsertProfessor(professor);
+                MessageBox.Show("Profesor registrado con exito", "Success",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+
+                _elegirCursoViewNavigationService.Navigate();
             }
             catch(Exception ex)
             {
