@@ -167,6 +167,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AgregarCursoCommand.cs" />
     <Compile Include="Commands\AsyncCommandBase.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\InicioVMContinuarCommand.cs" />
@@ -175,25 +176,23 @@
     <Compile Include="DbContexts\CaitiDbContext.cs" />
     <Compile Include="DbContexts\CaitiDbContextFactory.cs" />
     <Compile Include="DbContexts\CaitiDesignTimeDbContextFactory.cs" />
-    <Compile Include="DTOs\ProfessorDTO.cs" />
-    <Compile Include="Migrations\20221002210223_Initial.cs" />
-    <Compile Include="Migrations\20221002210223_Initial.designer.cs">
-      <DependentUpon>20221002210223_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20221009062013_Test89.cs" />
+    <Compile Include="Migrations\20221009062013_Test89.designer.cs">
+      <DependentUpon>20221009062013_Test89.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CaitiDbContextModelSnapshot.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Exceptions\CourseConflictException.cs" />
     <Compile Include="Models\Professor.cs" />
-    <Compile Include="Models\ProfessorBook.cs" />
     <Compile Include="Models\School.cs" />
     <Compile Include="Models\SistemaProfesores.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Services\ProfessorCreators\IProfessorCreator.cs" />
-    <Compile Include="Services\ProfessorCreators\ProfessorCreator.cs" />
-    <Compile Include="Services\ProfessorProviders\DatabaseProfessorProvider.cs" />
-    <Compile Include="Services\ProfessorProviders\IProfessorProvider.cs" />
+    <Compile Include="Services\ProfessorService\IProfessorControl.cs" />
+    <Compile Include="Services\ProfessorService\ProfesorCreator.cs" />
+    <Compile Include="Services\SubjectService\ISubjectControl.cs" />
+    <Compile Include="Services\SubjectService\SubjectCreator.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="ViewModels\ElegirCursoViewModel.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />

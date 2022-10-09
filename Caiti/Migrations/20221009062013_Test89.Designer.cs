@@ -3,14 +3,16 @@ using System;
 using Caiti.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Caiti.Migrations
 {
     [DbContext(typeof(CaitiDbContext))]
-    partial class CaitiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221009062013_Test89")]
+    partial class Test89
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

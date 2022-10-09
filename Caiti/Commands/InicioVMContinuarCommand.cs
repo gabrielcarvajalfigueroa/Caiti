@@ -39,6 +39,10 @@ namespace Caiti.Commands
                 {
                     if (professor.Name == _inicioViewModel.NombreUsuario)
                     {
+                        _sistemaProfesores._profesorEnSesion = professor;
+
+                        _sistemaProfesores._profesorEnSesion.Subjects = await _sistemaProfesores.GetAllSubjects(professor);
+
                         _elegirCursoViewNavigationService.Navigate();
                         _existProfessor = true;
                     }

@@ -3,54 +3,47 @@ using Caiti.Services;
 using Caiti.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-
 namespace Caiti.Commands
 {
-    public class RegistrarProfesorCommand : AsyncCommandBase
+    public class AgregarCursoCommand : AsyncCommandBase
     {
-        private readonly RegistroViewModel _registroViewModel;
+        private readonly ElegirCursoViewModel _elegirCursoViewModel;
         private readonly SistemaProfesores _sistemaProfesores;
         private readonly NavigationService _elegirCursoViewNavigationService;
 
-        public RegistrarProfesorCommand(RegistroViewModel registroViewModel, 
+        public AgregarCursoCommand(ElegirCursoViewModel elegirCursoViewModel,
             SistemaProfesores sistemaProfesores,
             NavigationService elegirCursoViewNavigationService)
         {
-            _registroViewModel = registroViewModel;
+            _elegirCursoViewModel = elegirCursoViewModel;
             _sistemaProfesores = sistemaProfesores;
             _elegirCursoViewNavigationService = elegirCursoViewNavigationService;
-
         }
 
         public override async Task ExecuteAsync(object parameter)
         {
-            Professor professor = new Professor(_registroViewModel.Nombre, _registroViewModel.Correo
-                , _registroViewModel.Telefono, "Horas de oficina pendiente");
+            Subject subject = new Subject( _elegirCursoViewModel.Ramo, _elegirCursoViewModel.Creditos,true);
 
             
             try
             {
-                await _sistemaProfesores.InsertProfessor(professor);
-                MessageBox.Show("Profesor registrado con exito", "Success",
+                await _sistemaProfesores.InsertSubject(subject, _sistemaProfesores._profesorEnSesion);
+                MessageBox.Show("Curso ingresado con exito", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
-                _elegirCursoViewNavigationService._professorEnSesion = professor;
-
-                _elegirCursoViewNavigationService.Navigate();
+                //_elegirCursoViewNavigationService.Navigate();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Problema al Insertar el Profesor", "Error",
                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
         }
-        
+    
     }
 }

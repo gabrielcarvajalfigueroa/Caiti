@@ -1,8 +1,8 @@
 ﻿using Caiti.DbContexts;
 using Caiti.Models;
 using Caiti.Services;
-using Caiti.Services.ProfessorCreators;
-using Caiti.Services.ProfessorProviders;
+using Caiti.Services.ProfessorService;
+using Caiti.Services.SubjectService;
 using Caiti.Stores;
 using Caiti.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -30,12 +30,12 @@ namespace Caiti
         public App()
         {
             _caitiDbContextFactory = new CaitiDbContextFactory(CONNECTION_STRING);
-            IProfessorProvider professorProvider = new DatabaseProfessorProvider(_caitiDbContextFactory);
-            IProfessorCreator professorCreator = new ProfessorCreator(_caitiDbContextFactory);
+            IProfessorControl professorControl = new ProfesorCreator(_caitiDbContextFactory);
+            ISubjectControl subjectControl = new SubjectCreator(_caitiDbContextFactory);
 
-            ProfessorBook professorBook = new ProfessorBook(professorProvider, professorCreator);
+            
 
-            _sistemaProfesores = new SistemaProfesores(professorBook, "Sistema Caiti");
+            _sistemaProfesores = new SistemaProfesores(professorControl,subjectControl, "Sistema Caiti");
             _navigationStore = new NavigationStore();
         }
 
@@ -74,7 +74,7 @@ namespace Caiti
 
         private ElegirCursoViewModel CreateElegirCursoViewModel()
         {
-            return new ElegirCursoViewModel(_navigationStore);
+            return new ElegirCursoViewModel(_sistemaProfesores, new NavigationService(_navigationStore,CreateRegistroViewModel));
         }
 
     }

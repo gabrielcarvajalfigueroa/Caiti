@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;  
@@ -8,21 +10,23 @@ namespace Caiti.Models
 {
     public class Subject
     {
-        private readonly List<Course> _courses;
-        public Subject(string id_subject, string name_subject, int credits, Boolean obligatory)
+        public Subject(string name_Subject, int credits, bool obligatory)
         {
-            Id_Subject = id_subject;
-            Name_Subject = name_subject;
+            Name_Subject = name_Subject;
             Credits = credits;
             Obligatory = obligatory;
         }
-        public string Id_Subject { get; set; }
+
+        [Key]
+        public Guid Id_Subject { get; set; }
+
+        [ForeignKey("Professor")]
+        public Guid ProfessorID { get; set; }
+
         public string Name_Subject { get; set; }
         public int Credits { get; set; }
         public bool Obligatory { get; set; }
-        public IEnumerable<Course> GetCourses()
-        {
-            return _courses;
-        }
+
+      
     }
 }

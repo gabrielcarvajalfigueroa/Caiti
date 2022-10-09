@@ -1,18 +1,19 @@
 ﻿using Caiti.DbContexts;
-using Caiti.DTOs;
 using Caiti.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caiti.Services.ProfessorCreators
+namespace Caiti.Services.ProfessorService
 {
-    public class ProfessorCreator : IProfessorCreator
+    public class ProfesorCreator : IProfessorControl
     {
         private readonly CaitiDbContextFactory _dbContextFactory;
-        public ProfessorCreator(CaitiDbContextFactory dbContextFactory)
+
+        public ProfesorCreator(CaitiDbContextFactory dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
@@ -23,23 +24,21 @@ namespace Caiti.Services.ProfessorCreators
             {
                 await Task.Delay(3000);
 
-                ProfessorDTO professorDTO = ToProfessorDTO(professor);
-
-                context.Professors.Add(professorDTO);
+                context.Professors.Add(professor);
                 await context.SaveChangesAsync();
             }
         }
 
-        private ProfessorDTO ToProfessorDTO(Professor professor)
+        public async Task<IEnumerable<Professor>> GetAllProfessors()
         {
-            return new ProfessorDTO()
+            using (CaitiDbContext context = _dbContextFactory.CreateDbContext())
             {
-                Name= professor.Name,
-                Email= professor.Email,
-                Phone= professor.Phone,
-                Office_hours= professor.Office_hours,
-                
-            };
+                await Task.Delay(3000);
+
+                IEnumerable<Professor> professors = await context.Professors.ToListAsync();
+
+                return professors;
+            }
         }
     }
 }

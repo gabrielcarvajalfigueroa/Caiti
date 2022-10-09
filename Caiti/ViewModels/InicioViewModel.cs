@@ -34,7 +34,6 @@ namespace Caiti.ViewModels
         
         public InicioViewModel(SistemaProfesores sistemaProfesores, NavigationService elegirCursoViewNavigationService, NavigationService RegistroViewNavigationService)
         {
-            //RegistrarseCommand = new NavigateCommand<RegistroViewModel>(navigationStore, () => new RegistroViewModel(navigationStore));
             RegistrarseCommand = new NavigateCommand(RegistroViewNavigationService);
             ContinuarCommand = new InicioVMContinuarCommand(this, sistemaProfesores, elegirCursoViewNavigationService);
         }
