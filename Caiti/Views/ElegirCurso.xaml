@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:Caiti.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+  
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -31,13 +34,25 @@
                   Height="195" 
                   VerticalAlignment="Top"
                   ItemsSource="{Binding SubjectsProfeEnSesion}">
-            <ListView.View>
+            <ListView.View >
                 <GridView>
                     <GridViewColumn Header="Nombre" Width="300"  DisplayMemberBinding="{Binding Name_Subject}"/>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button   Content="Planificar"/>
+                                <Button Content="Editar"
+                                        Command="{Binding EditarRACommand}"
+                                        CommandParameter="{Binding Path=ItemsSource.Name_Subject, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=local:ElegirCurso}}"
+                                        />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Eliminar" 
+                                        />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

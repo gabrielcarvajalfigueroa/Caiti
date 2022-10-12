@@ -14,6 +14,7 @@ namespace Caiti.ViewModels
 {
     public class ElegirCursoViewModel : ViewModelBase
     {
+
         public IEnumerable<Subject> _subjectsProfeEnSesion;
         
 
@@ -62,11 +63,14 @@ namespace Caiti.ViewModels
 
         public ICommand AgregarCommand { get; }
 
+        public ICommand EditarRACommand { get; }
+
         public ElegirCursoViewModel(SistemaProfesores sistemaProfesores, NavigationService elegirCursoViewNavigationService)
         {
             // se implementa haciendo uso del navigate command
             AgregarCommand = new AgregarCursoCommand(this, sistemaProfesores, elegirCursoViewNavigationService);
             _subjectsProfeEnSesion = sistemaProfesores._profesorEnSesion.Subjects;
+            EditarRACommand = new EditarRACommand();
         }
 
        
