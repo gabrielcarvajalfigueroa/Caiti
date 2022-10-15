@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Caiti.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Border CornerRadius="12">
 
@@ -36,7 +36,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <!--Boton Para Registrar-->
+                    
                     <TextBlock Text="REGISTER"
                                Foreground="DarkGray"
                                FontSize="10"
@@ -44,79 +44,20 @@
                                Grid.Column="0"
                                VerticalAlignment="Center"
                                Margin="10,0,0,0"/>
-                    <Button x:Name="btnMinimize"                           
-                            BorderThickness="0"
-                            Content="-"
-                            Foreground="White"
-                            FontSize="16"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="1"
-                            >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                    <Button x:Name="btnClose"                          
-                            BorderThickness="0"
-                            Content="X"
-                            Foreground="White"
-                            FontSize="12"
-                            FontFamily="Montserrat"
-                            Cursor="Hand"
-                            Grid.Column="2"
-                            >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#DA34AE"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                    
                 </Grid>
-                <StackPanel Width="220"
+                <StackPanel Width="680"
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
 
                     <TextBlock Text="Registrar"
                                Foreground="White"
-                               FontSize="25"
+                               FontSize="40"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    <Grid>
+                    <Grid Margin="0,80,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -136,7 +77,7 @@
                                Margin="0,35,0,0"/>
                             <TextBox x:Name="txtUser"
                              Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
+                             FontSize="18"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
@@ -144,14 +85,15 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              Height="28"
+                             Width="350"
                              VerticalContentAlignment="Center"
+                             HorizontalAlignment="Left"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0"
                              Background="Transparent">
                             </TextBox>
                         </StackPanel>
                         <!--APELLIDO-->
-                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,0,0">
+                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="25,0,0,0">
                             <TextBlock Text="Apellido"
                                Foreground="DarkGray"
                                FontSize="12"
@@ -160,7 +102,7 @@
                                Margin="0,35,0,0"/>
                             <TextBox 
                              Text="{Binding Apellido, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
+                             FontSize="18"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
@@ -184,7 +126,7 @@
                                Margin="0,35,0,0"/>
                             <TextBox 
                              Text="{Binding Correo, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
+                             FontSize="18"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
@@ -192,14 +134,15 @@
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
                              Height="28"
+                             Width="350"   
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0"
+                             HorizontalAlignment="Left"
                              Background="Transparent">
                             </TextBox>
                         </StackPanel>
                         <!--Telefono-->
-                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
+                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="25,0,0,0">
                             <TextBlock Text="Telefono"
                                Foreground="DarkGray"
                                FontSize="12"
@@ -208,7 +151,7 @@
                                Margin="0,35,0,0"/>
                             <TextBox
                              Text="{Binding Telefono, UpdateSourceTrigger=PropertyChanged}"
-                             FontSize="13"
+                             FontSize="18"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
                              Foreground="White"
@@ -261,7 +204,7 @@
                     </Button>
                     <!--Volver Login Boton-->
                     <Button
-                            Command="{Binding Pendiente}"
+                            Command="{Binding VolverCommand}"
                             BorderThickness="0"
                             Content="Volver"
                             Foreground="White"

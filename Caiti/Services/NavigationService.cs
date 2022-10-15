@@ -11,8 +11,8 @@ namespace Caiti.Services
 {
     public class NavigationService
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<ViewModelBase> _createViewModel;
+        public NavigationStore _navigationStore;
+        public  Func<ViewModelBase> _createViewModel;
 
         public Professor _professorEnSesion { get;  set; } 
 

@@ -177,7 +177,6 @@
     <Compile Include="Commands\InicioVMContinuarCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RegistrarProfesorCommand.cs" />
-    <Compile Include="Commands\VolverLoginCommand.cs" />
     <Compile Include="DbContexts\CaitiDbContext.cs" />
     <Compile Include="DbContexts\CaitiDbContextFactory.cs" />
     <Compile Include="DbContexts\CaitiDesignTimeDbContextFactory.cs" />
