@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caiti.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Caiti.Views
         public MenuView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CursosList.Items.Add(new Subject("Wena", 3, true));
         }
     }
 }

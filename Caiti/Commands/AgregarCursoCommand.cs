@@ -12,22 +12,24 @@ namespace Caiti.Commands
 {
     public class AgregarCursoCommand : AsyncCommandBase
     {
-        private readonly ElegirCursoViewModel _elegirCursoViewModel;
+        private readonly MenuViewModel _menuViewModel;
         private readonly SistemaProfesores _sistemaProfesores;
-        private readonly NavigationService _elegirCursoViewNavigationService;
+        private readonly NavigationService _menuView;
+        
 
-        public AgregarCursoCommand(ElegirCursoViewModel elegirCursoViewModel,
+        public AgregarCursoCommand(MenuViewModel menuViewModel,
             SistemaProfesores sistemaProfesores,
-            NavigationService elegirCursoViewNavigationService)
+            NavigationService menuView)
         {
-            _elegirCursoViewModel = elegirCursoViewModel;
+            _menuViewModel = menuViewModel;
             _sistemaProfesores = sistemaProfesores;
-            _elegirCursoViewNavigationService = elegirCursoViewNavigationService;
+            _menuView = menuView;
+            
         }
 
         public override async Task ExecuteAsync(object parameter)
         {
-            Subject subject = new Subject( _elegirCursoViewModel.Ramo, _elegirCursoViewModel.Creditos,true);
+            Subject subject = new Subject( _menuViewModel.NombreCurso, int.Parse(_menuViewModel.Creditos),true);
 
             
             try
@@ -35,8 +37,9 @@ namespace Caiti.Commands
                 await _sistemaProfesores.InsertSubject(subject, _sistemaProfesores._profesorEnSesion);
                 MessageBox.Show("Curso ingresado con exito", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
+                _menuViewModel._subjectsProfeEnSesion.Add(subject);
+                _sistemaProfesores._profesorEnSesion.Subjects.Append<Subject>(subject);
 
-                //_elegirCursoViewNavigationService.Navigate();
             }
             catch (Exception ex)
             {

@@ -8,7 +8,7 @@
         xmlns:viewmodels="clr-namespace:Caiti.ViewModels"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow">
+        Title="Caiti">
     <Grid>
         <Grid.Resources>
             <!-- Estos data templates se usan para mapear las views-->

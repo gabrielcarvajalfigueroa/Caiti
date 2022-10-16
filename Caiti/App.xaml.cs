@@ -78,7 +78,8 @@ namespace Caiti
         {
             return new MenuViewModel(_sistemaProfesores
                                      ,new NavigationService(_navigationStore, CreateCursoViewModel)
-                                     ,new NavigationService(_navigationStore,CreateInicioViewModel));
+                                     ,new NavigationService(_navigationStore,CreateInicioViewModel)
+                                     ,new NavigationService(_navigationStore,CreateMenuViewModel));
         }
 
         private CursoViewModel CreateCursoViewModel()

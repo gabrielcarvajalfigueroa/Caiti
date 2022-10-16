@@ -68,7 +68,7 @@ namespace Caiti.ViewModels
         public ElegirCursoViewModel(SistemaProfesores sistemaProfesores, NavigationService elegirCursoViewNavigationService)
         {
             // se implementa haciendo uso del navigate command
-            AgregarCommand = new AgregarCursoCommand(this, sistemaProfesores, elegirCursoViewNavigationService);
+            //AgregarCommand = new AgregarCursoCommand(this, sistemaProfesores, elegirCursoViewNavigationService);
             _subjectsProfeEnSesion = sistemaProfesores._profesorEnSesion.Subjects;
             EditarRACommand = new EditarRACommand();
         }
