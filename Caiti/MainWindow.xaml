@@ -24,7 +24,16 @@
             <DataTemplate DataType="{x:Type viewmodels:ElegirCursoViewModel}">
                 <views:ElegirCurso/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewmodels:MenuViewModel}">
+                <views:MenuView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:CursoViewModel}">
+                <views:CursoView/>
+            </DataTemplate>
+
+
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>

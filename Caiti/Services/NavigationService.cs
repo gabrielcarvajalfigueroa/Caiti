@@ -14,8 +14,6 @@ namespace Caiti.Services
         public NavigationStore _navigationStore;
         public  Func<ViewModelBase> _createViewModel;
 
-        public Professor _professorEnSesion { get;  set; } 
-
         public NavigationService(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
         {
             _navigationStore = navigationStore;

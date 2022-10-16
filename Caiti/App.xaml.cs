@@ -63,18 +63,27 @@ namespace Caiti
         private InicioViewModel CreateInicioViewModel()
         {
             return new InicioViewModel(_sistemaProfesores 
-                                       ,new NavigationService(_navigationStore, CreateElegirCursoViewModel)
+                                       ,new NavigationService(_navigationStore, CreateMenuViewModel)
                                        ,new NavigationService(_navigationStore, CreateRegistroViewModel));
         }
 
         private RegistroViewModel CreateRegistroViewModel()
         {
-            return new RegistroViewModel(_sistemaProfesores, new NavigationService(_navigationStore,CreateElegirCursoViewModel));
+            return new RegistroViewModel(_sistemaProfesores
+                                         ,new NavigationService(_navigationStore, CreateMenuViewModel)
+                                         ,new NavigationService(_navigationStore, CreateInicioViewModel));
         }
 
-        private ElegirCursoViewModel CreateElegirCursoViewModel()
+        private MenuViewModel CreateMenuViewModel()
         {
-            return new ElegirCursoViewModel(_sistemaProfesores, new NavigationService(_navigationStore,CreateRegistroViewModel));
+            return new MenuViewModel(_sistemaProfesores
+                                     ,new NavigationService(_navigationStore, CreateCursoViewModel)
+                                     ,new NavigationService(_navigationStore,CreateInicioViewModel));
+        }
+
+        private CursoViewModel CreateCursoViewModel()
+        {
+            return new CursoViewModel(_sistemaProfesores, new NavigationService(_navigationStore, CreateMenuViewModel));
         }
 
     }

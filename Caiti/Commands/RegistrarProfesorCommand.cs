@@ -16,15 +16,15 @@ namespace Caiti.Commands
     {
         private readonly RegistroViewModel _registroViewModel;
         private readonly SistemaProfesores _sistemaProfesores;
-        private readonly NavigationService _elegirCursoViewNavigationService;
+        private readonly NavigationService _menuView;
 
         public RegistrarProfesorCommand(RegistroViewModel registroViewModel, 
             SistemaProfesores sistemaProfesores,
-            NavigationService elegirCursoViewNavigationService)
+            NavigationService _menuViewNavigationService)
         {
             _registroViewModel = registroViewModel;
             _sistemaProfesores = sistemaProfesores;
-            _elegirCursoViewNavigationService = elegirCursoViewNavigationService;
+            _menuView = _menuViewNavigationService;
 
         }
 
@@ -40,9 +40,9 @@ namespace Caiti.Commands
                 MessageBox.Show("Profesor registrado con exito", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
-                _elegirCursoViewNavigationService._professorEnSesion = professor;
+                _sistemaProfesores._profesorEnSesion = professor;
 
-                _elegirCursoViewNavigationService.Navigate();
+                _menuView.Navigate();
             }
             catch(Exception ex)
             {
