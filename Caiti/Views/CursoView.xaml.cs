@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 namespace Caiti.Views
 {
     /// <summary>
-    /// Lógica de interacción para Inicio.xaml
+    /// Lógica de interacción para CursoView.xaml
     /// </summary>
-    public partial class Inicio : UserControl
+    public partial class CursoView : UserControl
     {
-        public Inicio()
+        public CursoView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AgregarRA agregarRA = new AgregarRA();
-
-            agregarRA.Show();
         }
     }
 }

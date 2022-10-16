@@ -6,11 +6,21 @@
              xmlns:local="clr-namespace:Caiti.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+  
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
         <TextBlock
             Grid.Row="0"
@@ -18,15 +28,78 @@
             FontSize="24"
             Margin="0 25 0 0"/>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 50">
-            <Button 
-                Content="Algebra"
-                Margin="20"/>
-            <Button 
-                Content="Añadir Curso"
-                Margin="20"/>
+        <ListView Grid.Row="1"
+                  Name="CursosList"
+                  Margin="50,20,50,0"
+                  Height="195" 
+                  VerticalAlignment="Top"
+                  ItemsSource="{Binding SubjectsProfeEnSesion}">
+            <ListView.View >
+                <GridView>
+                    <GridViewColumn Header="Nombre" Width="300"  DisplayMemberBinding="{Binding Name_Subject}"/>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Editar"
+                                        Command="{Binding EditarRACommand}"
+                                        CommandParameter="{Binding Path=ItemsSource.Name_Subject, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=local:ElegirCurso}}"
+                                        />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Eliminar" 
+                                        />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock Grid.Row="2" Margin="20 20" Text="Agregar Cursos:"/>
+
+
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <StackPanel>
+                <Label Content="Nombre Ramo" HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
+
+                <TextBox  Text="{Binding Ramo, UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalAlignment="Left"
+                          Width="200"
+                          Margin="5,0,0,0"  />
+            </StackPanel>
+            <StackPanel>
+                <Label  Content="Creditos " HorizontalAlignment="Left" Margin="3,0,0,0"   VerticalAlignment="Top"/>
+
+                <TextBox Text="{Binding Creditos, UpdateSourceTrigger=PropertyChanged}"
+                         HorizontalAlignment="Left"
+                         Width="200" 
+                         Margin="5,0,0,0"  />
+            </StackPanel>
         </StackPanel>
-            
+        
+        
+        
+        
+        <Button Grid.Row="4" 
+                x:Name="ReadButton"
+                HorizontalAlignment="Left" 
+                Margin="100,30,0,0"
+                Command="{Binding AgregarCommand}">
+            <StackPanel Orientation="Horizontal">
+                <Path Stretch="Uniform" Data="M 399.5625 598.46875 C 397.90565 598.46875 396.5625 599.8119 396.5625 601.46875 L 396.5625 615.46875 C 396.5625 617.12565 397.90565 618.46875 399.5625 618.46875 L 411.5625 618.46875 C 413.2194 618.46875 414.5625 617.12565 414.5625 615.46875 L 414.5625 605.46875 C 414.5625 601.60276 411.4285 598.46875 407.5625 598.46875 L 399.5625 598.46875 z M 399.5625 600.46875 L 406.5625 600.46875 L 406.5625 605.46875 L 412.5625 605.46875 L 412.5625 615.46875 C 412.5625 616.02105 412.1148 616.46875 411.5625 616.46875 L 399.5625 616.46875 C 399.01022 616.46875 398.5625 616.02105 398.5625 615.46875 L 398.5625 601.46875 C 398.5625 600.91647 399.01022 600.46875 399.5625 600.46875 z M 408.5625 600.5625 C 410.1738 600.88958 411.51355 601.99781 412.15625 603.46875 L 408.5625 603.46875 L 408.5625 600.5625 z M 400.5625 604.46875 L 400.5625 606.46875 L 404.5625 606.46875 L 404.5625 604.46875 L 400.5625 604.46875 z M 400.5625 608.46875 L 400.5625 610.46875 L 410.5625 610.46875 L 410.5625 608.46875 L 400.5625 608.46875 z M 400.5625 612.46875 L 400.5625 614.46875 L 410.5625 614.46875 L 410.5625 612.46875 L 400.5625 612.46875 z " Fill="#FF17314F" Width="15" Height="15" Margin="3,0,0,0"/>
+                <Label Content="Agregar"/>
+            </StackPanel>
+        </Button>
+
+        
+
+
     </Grid>
 </UserControl>

@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Caiti.Views
+namespace Caiti
 {
     /// <summary>
-    /// Lógica de interacción para Inicio.xaml
+    /// Lógica de interacción para AgregarRA.xaml
     /// </summary>
-    public partial class Inicio : UserControl
+    public partial class AgregarRA : Window
     {
-        public Inicio()
+        public AgregarRA()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AgregarRA agregarRA = new AgregarRA();
-
-            agregarRA.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caiti.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,20 +17,18 @@ using System.Windows.Shapes;
 namespace Caiti.Views
 {
     /// <summary>
-    /// Lógica de interacción para Inicio.xaml
+    /// Lógica de interacción para MenuView.xaml
     /// </summary>
-    public partial class Inicio : UserControl
+    public partial class MenuView : UserControl
     {
-        public Inicio()
+        public MenuView()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AgregarRA agregarRA = new AgregarRA();
-
-            agregarRA.Show();
+            CursosList.Items.Add(new Subject("Wena", 3, true));
         }
     }
 }

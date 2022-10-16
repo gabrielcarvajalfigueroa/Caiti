@@ -1,4 +1,5 @@
-﻿using Caiti.Stores;
+﻿using Caiti.Models;
+using Caiti.Stores;
 using Caiti.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Caiti.Services
 {
     public class NavigationService
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<ViewModelBase> _createViewModel;
+        public NavigationStore _navigationStore;
+        public  Func<ViewModelBase> _createViewModel;
 
         public NavigationService(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
         {

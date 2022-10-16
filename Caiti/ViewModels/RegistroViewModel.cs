@@ -76,11 +76,15 @@ namespace Caiti.ViewModels
 
         public ICommand ListoCommand { get; }
 
-        public RegistroViewModel(SistemaProfesores sistemaProfesores, NavigationService elegirCursoViewNavigationService)
+        public ICommand VolverCommand { get; }
+
+        public RegistroViewModel(SistemaProfesores sistemaProfesores, NavigationService MenuView, NavigationService InicioView)
         {
             // se implementa haciendo uso del navigate command
             //ListoCommand = new NavigateCommand<ElegirCursoViewModel>(navigationStore, () => new ElegirCursoViewModel(navigationStore));
-            ListoCommand = new RegistrarProfesorCommand(this, sistemaProfesores, elegirCursoViewNavigationService);        
+            ListoCommand = new RegistrarProfesorCommand(this, sistemaProfesores, MenuView);
+
+            VolverCommand = new NavigateCommand(InicioView);
         }
 
     }

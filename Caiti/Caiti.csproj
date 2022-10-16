@@ -167,48 +167,63 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AgregarRA.xaml.cs">
+      <DependentUpon>AgregarRA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\AgregarCursoCommand.cs" />
     <Compile Include="Commands\AsyncCommandBase.cs" />
     <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\EditarRACommand.cs" />
     <Compile Include="Commands\InicioVMContinuarCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RegistrarProfesorCommand.cs" />
     <Compile Include="DbContexts\CaitiDbContext.cs" />
     <Compile Include="DbContexts\CaitiDbContextFactory.cs" />
     <Compile Include="DbContexts\CaitiDesignTimeDbContextFactory.cs" />
-    <Compile Include="DTOs\ProfessorDTO.cs" />
-    <Compile Include="Migrations\20221002210223_Initial.cs" />
-    <Compile Include="Migrations\20221002210223_Initial.designer.cs">
-      <DependentUpon>20221002210223_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20221009062013_Test89.cs" />
+    <Compile Include="Migrations\20221009062013_Test89.designer.cs">
+      <DependentUpon>20221009062013_Test89.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CaitiDbContextModelSnapshot.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Exceptions\CourseConflictException.cs" />
     <Compile Include="Models\Professor.cs" />
-    <Compile Include="Models\ProfessorBook.cs" />
     <Compile Include="Models\School.cs" />
     <Compile Include="Models\SistemaProfesores.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Services\ProfessorCreators\IProfessorCreator.cs" />
-    <Compile Include="Services\ProfessorCreators\ProfessorCreator.cs" />
-    <Compile Include="Services\ProfessorProviders\DatabaseProfessorProvider.cs" />
-    <Compile Include="Services\ProfessorProviders\IProfessorProvider.cs" />
+    <Compile Include="Services\ProfessorService\IProfessorControl.cs" />
+    <Compile Include="Services\ProfessorService\ProfesorCreator.cs" />
+    <Compile Include="Services\SubjectService\ISubjectControl.cs" />
+    <Compile Include="Services\SubjectService\SubjectCreator.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="ViewModels\CursoViewModel.cs" />
     <Compile Include="ViewModels\ElegirCursoViewModel.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\RegistroViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\CursoView.xaml.cs">
+      <DependentUpon>CursoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ElegirCurso.xaml.cs">
       <DependentUpon>ElegirCurso.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Inicio.xaml.cs">
       <DependentUpon>Inicio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Registro.xaml.cs">
       <DependentUpon>Registro.xaml</DependentUpon>
     </Compile>
+    <Page Include="AgregarRA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -221,11 +236,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CursoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ElegirCurso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Inicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,7 +284,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\correo-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

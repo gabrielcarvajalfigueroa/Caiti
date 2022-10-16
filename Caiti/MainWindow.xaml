@@ -7,7 +7,8 @@
         xmlns:views="clr-namespace:Caiti.Views"
         xmlns:viewmodels="clr-namespace:Caiti.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowState="Maximized"
+        Title="Caiti">
     <Grid>
         <Grid.Resources>
             <!-- Estos data templates se usan para mapear las views-->
@@ -23,7 +24,16 @@
             <DataTemplate DataType="{x:Type viewmodels:ElegirCursoViewModel}">
                 <views:ElegirCurso/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewmodels:MenuViewModel}">
+                <views:MenuView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:CursoViewModel}">
+                <views:CursoView/>
+            </DataTemplate>
+
+
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>

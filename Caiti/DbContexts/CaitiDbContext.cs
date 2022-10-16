@@ -1,5 +1,4 @@
-﻿using Caiti.DTOs;
-using Caiti.Models;
+﻿using Caiti.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,8 @@ namespace Caiti.DbContexts
     public class CaitiDbContext : DbContext
     {
         public CaitiDbContext(DbContextOptions options) : base(options) { }
-        public DbSet<ProfessorDTO> Professors { get; set; }
+        public DbSet<Professor> Professors { get; set; }
+
+        public DbSet<Subject> Subjects { get; set; }
     }
 }
