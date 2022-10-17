@@ -3,6 +3,7 @@ using Caiti.Services;
 using Caiti.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,7 @@ namespace Caiti.Commands
                 , _registroViewModel.Telefono, "Horas de oficina pendiente");
 
             
+
             try
             {
                 await _sistemaProfesores.InsertProfessor(professor);
@@ -41,6 +43,8 @@ namespace Caiti.Commands
                     MessageBoxButton.OK, MessageBoxImage.Information);
 
                 _sistemaProfesores._profesorEnSesion = professor;
+
+                _sistemaProfesores._profesorEnSesion.Subjects = new ObservableCollection<Subject>();
 
                 _menuView.Navigate();
             }
