@@ -38,7 +38,13 @@ namespace Caiti.Commands
                 MessageBox.Show("Curso ingresado con exito", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 _menuViewModel._subjectsProfeEnSesion.Add(subject);
-                _sistemaProfesores._profesorEnSesion.Subjects.Append<Subject>(subject);
+                //_sistemaProfesores._profesorEnSesion.Subjects.Append<Subject>(subject);
+                //Se debe convertir a list para poder agregar el subject
+                List<Subject> lista = _sistemaProfesores._profesorEnSesion.Subjects.ToList();
+
+                lista.Add(subject);
+
+                _sistemaProfesores._profesorEnSesion.Subjects = lista;
 
             }
             catch (Exception ex)
